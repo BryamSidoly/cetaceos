@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oceania Cetáceos - O Fascinante Reino das Baleias</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            950: '#020813',
+                            900: '#030e21',
+                            850: '#061633',
+                            800: '#0a192f',
+                            700: '#0f2b4a',
+                            600: '#17406d',
+                            cyan: '#38bdf8',
+                            teal: '#2dd4bf',
+                            glow: '#00f2fe'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                        'wave': 'wave 10s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4', filter: 'drop-shadow(0 0 15px rgba(56, 189, 248, 0.4))' },
+                            '50%': { opacity: '0.9', filter: 'drop-shadow(0 0 30px rgba(45, 212, 191, 0.8))' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030e21;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #17406d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-card {
+            background: rgba(10, 25, 47, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-nav {
+            background: rgba(3, 14, 33, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+        }
+
+        .glass-glow {
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+        }
+
+        /* Depth simulator background gradient dynamic */
+        .depth-gradient {
+            transition: background 0.8s ease;
+        }
+
+        /* Custom Wave Divider */
+        .wave-divider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+
+        /* SVG Hotspot Ripple */
+        .hotspot-pulse {
+            animation: hotspotPulse 2s infinite;
+        }
+        @keyframes hotspotPulse {
+            0% { r: 6px; opacity: 1; }
+            100% { r: 18px; opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-ocean-950 text-slate-100 font-sans selection:bg-ocean-cyan selection:text-ocean-950 overflow-x-hidden">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="p-2.5 rounded-2xl bg-gradient-to-tr from-ocean-cyan/20 to-ocean-teal/20 border border-ocean-cyan/30 text-ocean-cyan group-hover:scale-105 transition-transform">
+                    <svg class="w-7 h-7 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 16c3-2 6-2 9 0s6 2 9 0"></path>
+                        <path d="M12 14c-4-4-2-9 3-10 1 3 3 5 7 5 1 2 0 5-2 6-2 1-5 0-8-1z"></path>
+                        <circle cx="17" cy="8" r="1" fill="currentColor"></circle>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-serif text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-100 via-ocean-cyan to-ocean-teal">Oceania</span>
+                    <span class="block text-[10px] tracking-widest text-ocean-cyan font-semibold uppercase">Cetáceos</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium">
+                <a href="#especies" class="hover:text-ocean-cyan transition-colors py-1">Espécies</a>
+                <a href="#comparador" class="hover:text-ocean-cyan transition-colors py-1">Comparador</a>
+                <a href="#profundidade" class="hover:text-ocean-cyan transition-colors py-1">Profundidade</a>
+                <a href="#anatomia" class="hover:text-ocean-cyan transition-colors py-1">Anatomia</a>
+                <a href="#sintetizador" class="hover:text-ocean-cyan transition-colors py-1">Cantos Synthesizer</a>
+                <a href="#migracao" class="hover:text-ocean-cyan transition-colors py-1">Migração</a>
+                <a href="#quiz" class="hover:text-ocean-cyan transition-colors py-1">Quiz</a>
+            </nav>
+
+            <!-- Quick Ambient Audio Toggle Button -->
+            <div class="flex items-center space-x-4">
+                <button id="global-audio-btn" onclick="toggleGlobalAmbient()" class="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-ocean-800/80 hover:bg-ocean-700 border border-ocean-cyan/30 text-xs text-ocean-cyan transition-all hover:shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+                    <i data-lucide="volume-2" id="global-audio-icon" class="w-4 h-4"></i>
+                    <span id="global-audio-text" class="hidden sm:inline">Som do Oceano</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg bg-ocean-800 border border-ocean-cyan/20 text-slate-200">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Panel -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-ocean-cyan/10 bg-ocean-900/95 backdrop-blur-xl px-6 py-6 space-y-4">
+            <a href="#especies" onclick="toggleMobileMenu()" class="block text-slate-200 hover:text-ocean-cyan py-2 border-b border-ocean-800">Espécies</a>
+            <a href="#comparador" onclick="toggleMobileMenu()" class="block text-slate-200 hover:text-ocean-cyan py-2 border-b border-ocean-800">Comparador de Tamanho</a>
+            <a href="#profundidade" onclick="toggleMobileMenu()" class="block text-slate-200 hover:text-ocean-cyan py-2 border-b border-ocean-800">Simulador de Profundidade</a>
+            <a href="#anatomia" onclick="toggleMobileMenu()" class="block text-slate-200 hover:text-ocean-cyan py-2 border-b border-ocean-800">Anatomia Interativa</a>
+            <a href="#sintetizador" onclick="toggleMobileMenu()" class="block text-slate-200 hover:text-ocean-cyan py-2 border-b border-ocean-800">Sintetizador de Cantos</a>
+            <a href="#migracao" onclick="toggleMobileMenu()" class="block text-slate-200 hover:text-ocean-cyan py-2 border-b border-ocean-800">Rotas Migratórias</a>
+            <a href="#quiz" onclick="toggleMobileMenu()" class="block text-slate-200 hover:text-ocean-cyan py-2">Quiz Ecológico</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+        <!-- Interactive Particle Canvas Background -->
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+        
+        <!-- Glowing Ambient Lighting -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 sm:w-[600px] h-96 sm:h-[600px] bg-ocean-cyan/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-80 h-80 bg-ocean-teal/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border border-ocean-cyan/30 text-ocean-cyan text-xs sm:text-sm font-semibold mb-8 animate-float">
+                <i data-lucide="waves" class="w-4 h-4"></i>
+                <span>Exploração Marinha Profunda & Interativa</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-slate-100 leading-[1.15] mb-6">
+                O Fascinante Reino dos <br class="hidden sm:inline">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-ocean-cyan via-teal-300 to-indigo-400">Leviatãs dos Oceanos</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-base sm:text-xl text-slate-300 font-light leading-relaxed mb-10">
+                Mergulhe no universo dos cetáceos. Descubra espécies majestosas, ouça cantos sintetizados em tempo real, explore abismos de +3.000 metros e compare a anatomia dos gigantes do mar.
+            </p>
+
+            <!-- Call To Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#especies" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-ocean-cyan to-ocean-teal text-ocean-950 font-bold text-base hover:shadow-[0_0_30px_rgba(56,189,248,0.5)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                    <span>Iniciar Mergulho Virtual</span>
+                    <i data-lucide="arrow-down" class="w-5 h-5"></i>
+                </a>
+                <a href="#sintetizador" class="w-full sm:w-auto px-8 py-4 rounded-2xl glass-card text-slate-100 font-semibold text-base hover:bg-ocean-800/80 border border-ocean-cyan/30 transition-all flex items-center justify-center space-x-2">
+                    <i data-lucide="music" class="w-5 h-5 text-ocean-cyan"></i>
+                    <span>Ouvir Cantos Sintetizados</span>
+                </a>
+            </div>
+
+            <!-- Animated Stat Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div class="glass-card p-5 rounded-2xl text-center border-t-2 border-t-ocean-cyan">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-ocean-cyan mb-1 counter" data-target="90">+0</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Espécies Conhecidas</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center border-t-2 border-t-ocean-teal">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-ocean-teal mb-1"><span class="counter" data-target="30">0</span>m</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Comprimento Máximo</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center border-t-2 border-t-indigo-400">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-indigo-400 mb-1"><span class="counter" data-target="200">0</span>t</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Peso Recorde (Azul)</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center border-t-2 border-t-emerald-400">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400 mb-1">+<span class="counter" data-target="3000">0</span>m</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Profundidade de Mergulho</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider text-ocean-900">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="currentColor"></path>
+        </svg>
+    </div>
+
+    <!-- Interactive Species Encyclopedia -->
+    <section id="especies" class="py-20 bg-ocean-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-ocean-cyan tracking-widest uppercase mb-3">Catálogo de Espécies</h2>
+                <h3 class="font-serif text-3xl sm:text-5xl font-bold text-slate-100 mb-4">Enciclopédia Interativa de Cetáceos</h3>
+                <p class="text-slate-400 text-base">Filtre por tipo, pesquise nomes e clique nos cards para visualizar fichas completas, rotas e cantos.</p>
+            </div>
+
+            <!-- Search and Filters Bar -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 glass-card p-4 rounded-2xl">
+                <!-- Search Input -->
+                <div class="relative w-full md:w-80">
+                    <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="species-search" oninput="filterSpecies()" placeholder="Buscar por nome (ex: Jubarte, Orca)..." class="w-full pl-11 pr-4 py-2.5 rounded-xl bg-ocean-950/80 border border-ocean-cyan/20 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-ocean-cyan text-sm">
+                </div>
+
+                <!-- Filter Category Buttons -->
+                <div class="flex flex-wrap items-center gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+                    <button onclick="setFilter('todos')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-ocean-cyan text-ocean-950 transition-all">Todos</button>
+                    <button onclick="setFilter('misticeto')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-card hover:border-ocean-cyan/50 text-slate-300 transition-all">Misticetos (Barreiras)</button>
+                    <button onclick="setFilter('odontoceto')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-card hover:border-ocean-cyan/50 text-slate-300 transition-all">Odontocetos (Dentes)</button>
+                    <button onclick="setFilter('ameacada')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-card hover:border-ocean-cyan/50 text-slate-300 transition-all">Ameaçadas</button>
+                    <button onclick="setFilter('brasil')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-card hover:border-ocean-cyan/50 text-slate-300 transition-all">Visitantes do Brasil 🇧🇷</button>
+                </div>
+            </div>
+
+            <!-- Species Grid -->
+            <div id="species-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Species Detail Modal -->
+    <div id="species-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-ocean-950/80 backdrop-blur-md overflow-y-auto">
+        <div class="relative w-full max-w-3xl glass-card rounded-3xl overflow-hidden border border-ocean-cyan/30 max-h-[90vh] flex flex-col my-auto shadow-2xl">
+            <!-- Modal Header Image -->
+            <div class="relative h-64 sm:h-80 w-full overflow-hidden">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-ocean-950 via-ocean-950/40 to-transparent"></div>
+                
+                <button onclick="closeModal()" class="absolute top-4 right-4 p-2 rounded-full bg-ocean-950/70 border border-white/20 text-slate-200 hover:text-white hover:bg-ocean-800 transition-all">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+
+                <div class="absolute bottom-4 left-6 right-6">
+                    <span id="modal-status" class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"></span>
+                    <h3 id="modal-title" class="font-serif text-3xl sm:text-4xl font-bold text-white"></h3>
+                    <p id="modal-scientific" class="text-ocean-cyan italic text-sm sm:text-base"></p>
+                </div>
+            </div>
+
+            <!-- Modal Body Content -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6">
+                <!-- Metrics Bar -->
+                <div class="grid grid-cols-3 gap-4 p-4 rounded-2xl bg-ocean-950/60 border border-ocean-cyan/10 text-center">
+                    <div>
+                        <span class="block text-xs text-slate-400">Comprimento</span>
+                        <span id="modal-length" class="text-base sm:text-lg font-bold text-ocean-cyan"></span>
+                    </div>
+                    <div>
+                        <span class="block text-xs text-slate-400">Peso Máximo</span>
+                        <span id="modal-weight" class="text-base sm:text-lg font-bold text-ocean-teal"></span>
+                    </div>
+                    <div>
+                        <span class="block text-xs text-slate-400">Profundidade</span>
+                        <span id="modal-depth" class="text-base sm:text-lg font-bold text-indigo-400"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-ocean-cyan mb-2">Visão Geral & Descrição</h4>
+                    <p id="modal-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed"></p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl bg-ocean-850 border border-ocean-cyan/10">
+                        <div class="flex items-center space-x-2 text-ocean-teal font-semibold text-sm mb-2">
+                            <i data-lucide="fish" class="w-4 h-4"></i>
+                            <span>Alimentação e Dieta</span>
+                        </div>
+                        <p id="modal-diet" class="text-xs sm:text-sm text-slate-300"></p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-ocean-850 border border-ocean-cyan/10">
+                        <div class="flex items-center space-x-2 text-ocean-cyan font-semibold text-sm mb-2">
+                            <i data-lucide="compass" class="w-4 h-4"></i>
+                            <span>Rota & Habitação</span>
+                        </div>
+                        <p id="modal-habitat" class="text-xs sm:text-sm text-slate-300"></p>
+                    </div>
+                </div>
+
+                <!-- Interactive Sound Simulation Button inside modal -->
+                <div class="p-4 rounded-2xl bg-gradient-to-r from-ocean-800 to-ocean-900 border border-ocean-cyan/30 flex items-center justify-between">
+                    <div>
+                        <h5 class="font-semibold text-slate-100 text-sm">Ouvir Vocalização Simulação</h5>
+                        <p class="text-xs text-slate-400">Sintetizador acústico subaquático em tempo real</p>
+                    </div>
+                    <button id="modal-sound-btn" onclick="playModalSound()" class="px-4 py-2 rounded-xl bg-ocean-cyan hover:bg-ocean-teal text-ocean-950 font-bold text-xs flex items-center space-x-2 transition-all">
+                        <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                        <span>Reproduzir Canto</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Size & Weight Comparator -->
+    <section id="comparador" class="py-20 bg-ocean-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-bold text-ocean-teal tracking-widest uppercase mb-3">Escala Visual</h2>
+                <h3 class="font-serif text-3xl sm:text-5xl font-bold text-slate-100 mb-4">Comparador Visual de Tamanho e Peso</h3>
+                <p class="text-slate-400 text-base">Compare a dimensão de grandes cetáceos com elementos do nosso cotidiano, como um ser humano, um ônibus escolar ou um submarino nuclear.</p>
+            </div>
+
+            <div class="glass-card p-6 sm:p-10 rounded-3xl border border-ocean-cyan/20">
+                <!-- Controls -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                    <div>
+                        <label class="block text-xs font-bold text-ocean-cyan uppercase tracking-wider mb-2">1. Selecione o Cetáceo:</label>
+                        <select id="comp-whale-select" onchange="updateComparison()" class="w-full px-4 py-3 rounded-xl bg-ocean-900 border border-ocean-cyan/30 text-slate-100 text-sm focus:outline-none focus:border-ocean-cyan">
+                            <option value="blue">Baleia-Azul (30m / 190t)</option>
+                            <option value="fin">Baleia-Fin (24m / 80t)</option>
+                            <option value="sperm">Cachalote (18m / 50t)</option>
+                            <option value="humpback">Baleia-Jubarte (16m / 36t)</option>
+                            <option value="orca">Orca (9m / 6t)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-ocean-teal uppercase tracking-wider mb-2">2. Comparar com Referência:</label>
+                        <select id="comp-ref-select" onchange="updateComparison()" class="w-full px-4 py-3 rounded-xl bg-ocean-900 border border-ocean-cyan/30 text-slate-100 text-sm focus:outline-none focus:border-ocean-teal">
+                            <option value="human">Ser Humano (1.8m / 0.08t)</option>
+                            <option value="elephant">Elefante Africano (4m / 6t)</option>
+                            <option value="bus">Ônibus Escolar (12m / 12t)</option>
+                            <option value="submarine">Submarino de Pesquisa (70m / 1000t)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Visual Bar Chart Comparison Display -->
+                <div class="space-y-8 my-8">
+                    <!-- Whale Item Bar -->
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <span id="comp-whale-label" class="text-ocean-cyan flex items-center space-x-2">
+                                <i data-lucide="fish" class="w-4 h-4"></i>
+                                <span>Baleia-Azul</span>
+                            </span>
+                            <span id="comp-whale-metrics" class="text-slate-300">30 metros | 190 toneladas</span>
+                        </div>
+                        <div class="w-full h-10 bg-ocean-900/80 rounded-xl p-1 border border-ocean-cyan/20 relative overflow-hidden">
+                            <div id="comp-whale-bar" class="h-full bg-gradient-to-r from-ocean-cyan to-ocean-teal rounded-lg transition-all duration-700 flex items-center justify-end pr-3 text-ocean-950 font-bold text-xs" style="width: 100%;">
+                                100%
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reference Item Bar -->
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <span id="comp-ref-label" class="text-ocean-teal flex items-center space-x-2">
+                                <i data-lucide="user" class="w-4 h-4"></i>
+                                <span>Ser Humano</span>
+                            </span>
+                            <span id="comp-ref-metrics" class="text-slate-300">1.8 metros | 0.08 toneladas</span>
+                        </div>
+                        <div class="w-full h-10 bg-ocean-900/80 rounded-xl p-1 border border-ocean-cyan/20 relative overflow-hidden">
+                            <div id="comp-ref-bar" class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg transition-all duration-700 flex items-center justify-end pr-3 text-white font-bold text-xs" style="width: 6%;">
+                                6%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Comparison Fact Card -->
+                <div class="p-6 rounded-2xl bg-ocean-900/90 border border-ocean-cyan/20 flex items-start space-x-4">
+                    <div class="p-3 rounded-xl bg-ocean-cyan/20 text-ocean-cyan">
+                        <i data-lucide="scale" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-100 text-base mb-1">Curiosidade de Equivalência</h4>
+                        <p id="comp-fact-text" class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            A Baleia-Azul é aproximadamente 16.6 vezes mais longa do que um Ser Humano e seu peso equivale a mais de 2.300 seres humanos adultos juntos!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Dive Depth Simulator -->
+    <section id="profundidade" class="py-20 bg-ocean-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-ocean-cyan tracking-widest uppercase mb-3">Simulador Subaquático</h2>
+                <h3 class="font-serif text-3xl sm:text-5xl font-bold text-slate-100 mb-4">Explorador de Profundidade Oceânica</h3>
+                <p class="text-slate-400 text-base">Deslize o controle abaixo para mergulhar de 0 a 3.000 metros e veja a transformação da iluminação, pressão e quais espécies habitam cada zona.</p>
+            </div>
+
+            <div id="depth-container" class="depth-gradient glass-card rounded-3xl p-6 sm:p-10 border border-ocean-cyan/30 text-white relative transition-colors duration-500">
+                <!-- Top Control Slider -->
+                <div class="mb-10 max-w-2xl mx-auto">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-ocean-cyan">Ajustar Profundidade</span>
+                        <span id="depth-value" class="text-2xl font-black font-serif text-ocean-teal">0 metros</span>
+                    </div>
+                    <input type="range" id="depth-range" min="0" max="3000" step="10" value="0" oninput="updateDepthSimulator()" class="w-full h-3 bg-ocean-950 rounded-lg appearance-none cursor-pointer accent-ocean-cyan">
+                    <div class="flex justify-between text-[10px] text-slate-400 mt-2 font-mono">
+                        <span>0m (Superfície)</span>
+                        <span>200m (Mesopelágica)</span>
+                        <span>1000m (Batipelágica)</span>
+                        <span>3000m+ (Abissal)</span>
+                    </div>
+                </div>
+
+                <!-- Depth Info Dashboard -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="p-4 rounded-2xl bg-ocean-950/70 border border-white/10 backdrop-blur-md">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i data-lucide="layers" class="w-5 h-5 text-ocean-cyan"></i>
+                            <span class="text-xs font-bold uppercase text-slate-400">Zona Oceânica</span>
+                        </div>
+                        <div id="zone-title" class="text-xl font-bold text-slate-100">Zona Epipelágica</div>
+                        <p id="zone-desc" class="text-xs text-slate-300 mt-1">Zona ensolarada com abundância de luz e vida fotossintética.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-ocean-950/70 border border-white/10 backdrop-blur-md">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i data-lucide="gauge" class="w-5 h-5 text-ocean-teal"></i>
+                            <span class="text-xs font-bold uppercase text-slate-400">Pressão Hidrostática</span>
+                        </div>
+                        <div id="zone-pressure" class="text-xl font-bold text-ocean-teal">1.0 atm</div>
+                        <p class="text-xs text-slate-300 mt-1">Equivalente à pressão atmosférica ao nível do mar.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-ocean-950/70 border border-white/10 backdrop-blur-md">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i data-lucide="thermometer" class="w-5 h-5 text-indigo-400"></i>
+                            <span class="text-xs font-bold uppercase text-slate-400">Temperatura Média</span>
+                        </div>
+                        <div id="zone-temp" class="text-xl font-bold text-indigo-400">20.0 °C</div>
+                        <p class="text-xs text-slate-300 mt-1">Águas quentes de superfície enriquecidas pela radiação solar.</p>
+                    </div>
+                </div>
+
+                <!-- Species present at this depth -->
+                <div class="p-6 rounded-2xl bg-ocean-950/80 border border-white/10">
+                    <h4 class="text-sm font-bold text-ocean-cyan uppercase tracking-wider mb-4 flex items-center space-x-2">
+                        <i data-lucide="navigation" class="w-4 h-4"></i>
+                        <span>Cetáceos e Criaturas Encontradas nesta Profundidade</span>
+                    </h4>
+                    <div id="depth-species-list" class="flex flex-wrap gap-3">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Anatomy Diagram -->
+    <section id="anatomia" class="py-20 bg-ocean-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-ocean-teal tracking-widest uppercase mb-3">Infográfico Biológico</h2>
+                <h3 class="font-serif text-3xl sm:text-5xl font-bold text-slate-100 mb-4">Anatomia Adaptativa dos Cetáceos</h3>
+                <p class="text-slate-400 text-base">Passe o cursor ou clique nos pontos luminosos (hotspots) da ilustração para entender as adaptações incríveis que permitiram às baleias dominar os oceanos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <!-- SVG Interactive Diagram Column -->
+                <div class="lg:col-span-2 glass-card p-6 rounded-3xl border border-ocean-cyan/20 relative overflow-hidden flex items-center justify-center min-h-[350px]">
+                    <svg viewBox="0 0 800 400" class="w-full h-auto max-h-[420px] drop-shadow-2xl">
+                        <defs>
+                            <linearGradient id="whaleBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#1e3a8a"/>
+                                <stop offset="50%" stop-color="#0f172a"/>
+                                <stop offset="100%" stop-color="#0284c7"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Whale Body Outline -->
+                        <path d="M 120 200 C 180 120, 350 100, 520 150 C 620 180, 700 170, 750 140 C 730 190, 740 220, 760 250 C 700 230, 620 220, 500 240 C 380 260, 240 280, 120 200 Z" fill="url(#whaleBodyGrad)" stroke="#38bdf8" stroke-width="2.5"/>
+
+                        <!-- Belly Ventral Grooves -->
+                        <path d="M 220 220 Q 350 255 450 240" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="4,4"/>
+                        <path d="M 210 210 Q 340 245 440 230" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="4,4"/>
+
+                        <!-- Pectoral Fin -->
+                        <path d="M 330 225 C 310 280, 360 320, 390 280 C 370 250, 350 230, 330 225 Z" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+
+                        <!-- Tail Fluke -->
+                        <path d="M 750 140 C 770 100, 790 90, 795 120 C 770 160, 760 190, 795 230 C 785 250, 765 240, 745 220" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+
+                        <!-- Eye -->
+                        <circle cx="210" cy="195" r="4" fill="#38bdf8"/>
+
+                        <!-- Hotspots Clicáveis -->
+                        <!-- 1. Espiráculo (Blowhole) -->
+                        <g class="cursor-pointer group" onclick="selectAnatomy('blowhole')">
+                            <circle cx="250" cy="130" r="10" fill="#38bdf8" opacity="0.3" class="hotspot-pulse"/>
+                            <circle cx="250" cy="130" r="6" fill="#38bdf8" class="group-hover:scale-125 transition-transform"/>
+                            <text x="250" y="110" font-size="12" fill="#38bdf8" text-anchor="middle" font-weight="bold">Espiráculo</text>
+                        </g>
+
+                        <!-- 2. Barretas / Baleen -->
+                        <g class="cursor-pointer group" onclick="selectAnatomy('baleen')">
+                            <circle cx="160" cy="210" r="10" fill="#2dd4bf" opacity="0.3" class="hotspot-pulse"/>
+                            <circle cx="160" cy="210" r="6" fill="#2dd4bf" class="group-hover:scale-125 transition-transform"/>
+                            <text x="140" y="235" font-size="12" fill="#2dd4bf" text-anchor="middle" font-weight="bold">Barretas</text>
+                        </g>
+
+                        <!-- 3. Camada de Gordura (Blubber) -->
+                        <g class="cursor-pointer group" onclick="selectAnatomy('blubber')">
+                            <circle cx="400" cy="155" r="10" fill="#f59e0b" opacity="0.3" class="hotspot-pulse"/>
+                            <circle cx="400" cy="155" r="6" fill="#f59e0b" class="group-hover:scale-125 transition-transform"/>
+                            <text x="400" y="135" font-size="12" fill="#f59e0b" text-anchor="middle" font-weight="bold">Gordura (Blubber)</text>
+                        </g>
+
+                        <!-- 4. Nadadeira Peitoral -->
+                        <g class="cursor-pointer group" onclick="selectAnatomy('fin')">
+                            <circle cx="350" cy="280" r="10" fill="#818cf8" opacity="0.3" class="hotspot-pulse"/>
+                            <circle cx="350" cy="280" r="6" fill="#818cf8" class="group-hover:scale-125 transition-transform"/>
+                            <text x="350" y="310" font-size="12" fill="#818cf8" text-anchor="middle" font-weight="bold">Nadadeira Peitoral</text>
+                        </g>
+
+                        <!-- 5. Cauda (Fluke) -->
+                        <g class="cursor-pointer group" onclick="selectAnatomy('fluke')">
+                            <circle cx="765" cy="180" r="10" fill="#34d399" opacity="0.3" class="hotspot-pulse"/>
+                            <circle cx="765" cy="180" r="6" fill="#34d399" class="group-hover:scale-125 transition-transform"/>
+                            <text x="740" y="160" font-size="12" fill="#34d399" text-anchor="middle" font-weight="bold">Cauda (Fluke)</text>
+                        </g>
+
+                        <!-- 6. Coração Gigante -->
+                        <g class="cursor-pointer group" onclick="selectAnatomy('heart')">
+                            <circle cx="300" cy="200" r="10" fill="#ef4444" opacity="0.3" class="hotspot-pulse"/>
+                            <circle cx="300" cy="200" r="6" fill="#ef4444" class="group-hover:scale-125 transition-transform"/>
+                            <text x="300" y="180" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="bold">Coração</text>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Info Panel Column -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border border-ocean-cyan/20 flex flex-col justify-center min-h-[350px]">
+                    <div id="anatomy-info">
+                        <span id="anatomy-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-ocean-cyan/20 text-ocean-cyan mb-3">Clique em um ponto do diagrama</span>
+                        <h4 id="anatomy-title" class="font-serif text-2xl font-bold text-slate-100 mb-3">Selecione uma Estrutura</h4>
+                        <p id="anatomy-text" class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Clique nos marcadores reluzentes para explorar os órgãos e adaptações anatômicas surpreendentes que viabilizam a sobrevivência em águas geladas e grandes profundidades.
+                        </p>
+                        <div id="anatomy-fact" class="p-4 rounded-xl bg-ocean-900/80 border border-ocean-cyan/10 text-xs text-ocean-cyan italic">
+                            Dica: As baleias possuem vestígios fósseis de ossos pélvicos, evidência de sua ancestralidade com mamíferos terrestres de quatro patas!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web Audio API Whale Song Synthesizer -->
+    <section id="sintetizador" class="py-20 bg-ocean-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-ocean-cyan tracking-widest uppercase mb-3">Laboratório Acústico Subaquático</h2>
+                <h3 class="font-serif text-3xl sm:text-5xl font-bold text-slate-100 mb-4">Sintetizador de Cantos de Baleia</h3>
+                <p class="text-slate-400 text-base">Utilizando a Web Audio API nativa, este sintetizador gera em tempo real frequências graves, ressonâncias e cliques de ecolocalização característicos.</p>
+            </div>
+
+            <div class="glass-card p-6 sm:p-10 rounded-3xl border border-ocean-cyan/30">
+                <!-- Visualizer Waveform Canvas -->
+                <div class="relative h-48 sm:h-64 w-full bg-ocean-950/90 rounded-2xl overflow-hidden mb-8 border border-ocean-cyan/20 flex items-center justify-center">
+                    <canvas id="audio-visualizer" class="w-full h-full absolute inset-0"></canvas>
+                    <div id="visualizer-overlay" class="relative z-10 text-center pointer-events-none">
+                        <span class="text-xs font-mono uppercase tracking-widest text-ocean-cyan/70">Visualizador de Frequência em Tempo Real</span>
+                    </div>
+                </div>
+
+                <!-- Sound Presets Controls Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <button onclick="playSynthPreset('humpback')" class="synth-btn p-5 rounded-2xl glass-card hover:bg-ocean-800 border border-ocean-cyan/30 text-left transition-all hover:scale-[1.02] group">
+                        <div class="p-3 rounded-xl bg-ocean-cyan/10 text-ocean-cyan w-fit mb-3 group-hover:bg-ocean-cyan group-hover:text-ocean-950 transition-colors">
+                            <i data-lucide="music" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-100 text-base mb-1">Canto da Jubarte</h4>
+                        <p class="text-xs text-slate-400">Glissandos agudos e melódicos ressonantes (200Hz - 800Hz)</p>
+                    </button>
+
+                    <button onclick="playSynthPreset('blue')" class="synth-btn p-5 rounded-2xl glass-card hover:bg-ocean-800 border border-ocean-cyan/30 text-left transition-all hover:scale-[1.02] group">
+                        <div class="p-3 rounded-xl bg-ocean-teal/10 text-ocean-teal w-fit mb-3 group-hover:bg-ocean-teal group-hover:text-ocean-950 transition-colors">
+                            <i data-lucide="radio" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-100 text-base mb-1">Chamado Baleia-Azul</h4>
+                        <p class="text-xs text-slate-400">Pulsos de infra-som de altíssima potência (30Hz - 60Hz)</p>
+                    </button>
+
+                    <button onclick="playSynthPreset('sperm')" class="synth-btn p-5 rounded-2xl glass-card hover:bg-ocean-800 border border-ocean-cyan/30 text-left transition-all hover:scale-[1.02] group">
+                        <div class="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 w-fit mb-3 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                            <i data-lucide="activity" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-100 text-base mb-1">Ecolocalização Cachalote</h4>
+                        <p class="text-xs text-slate-400">Sequência rápida de cliques de sonar de alta penetração</p>
+                    </button>
+
+                    <button onclick="playSynthPreset('abyss')" class="synth-btn p-5 rounded-2xl glass-card hover:bg-ocean-800 border border-ocean-cyan/30 text-left transition-all hover:scale-[1.02] group">
+                        <div class="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 w-fit mb-3 group-hover:bg-emerald-500 group-hover:text-ocean-950 transition-colors">
+                            <i data-lucide="disc" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-100 text-base mb-1">Ambiência Abissal</h4>
+                        <p class="text-xs text-slate-400">Ruído oceânico abissal de frequências filtradas</p>
+                    </button>
+                </div>
+
+                <!-- Stop Button -->
+                <div class="flex justify-center">
+                    <button onclick="stopSynthSound()" class="px-6 py-3 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 font-semibold text-xs flex items-center space-x-2 transition-all">
+                        <i data-lucide="square" class="w-4 h-4 fill-current"></i>
+                        <span>Interromper Síntese de Áudio</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Migratory Routes Simulator -->
+    <section id="migracao" class="py-20 bg-ocean-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-ocean-teal tracking-widest uppercase mb-3">Jornada Global</h2>
+                <h3 class="font-serif text-3xl sm:text-5xl font-bold text-slate-100 mb-4">Simulador de Rotas Migratórias</h3>
+                <p class="text-slate-400 text-base">As baleias realizam algumas das maiores migrações do reino animal. Alterne entre as estações do ano para observar os deslocamentos entre polos e ilhas tropicais.</p>
+            </div>
+
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border border-ocean-cyan/20">
+                <!-- Season Toggle Buttons -->
+                <div class="flex justify-center mb-8">
+                    <div class="inline-flex p-1.5 rounded-2xl bg-ocean-900 border border-ocean-cyan/20">
+                        <button id="season-winter" onclick="setSeason('inverno')" class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-ocean-cyan text-ocean-950">Inverno / Reprodução (Águas Tropicais)</button>
+                        <button id="season-summer" onclick="setSeason('verao')" class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white transition-all">Verão / Alimentação (Águas Polares)</button>
+                    </div>
+                </div>
+
+                <!-- Interactive World Migration Map SVG Container -->
+                <div class="relative bg-ocean-900/80 rounded-2xl p-4 border border-ocean-cyan/10 overflow-hidden">
+                    <svg viewBox="0 0 1000 500" class="w-full h-auto">
+                        <!-- Simplifed World Map Continents Vector -->
+                        <path d="M 150 120 Q 200 80 300 100 T 350 220 Q 280 250 200 220 Z" fill="#0f2b4a" stroke="#17406d" stroke-width="1.5"/> <!-- América do Norte -->
+                        <path d="M 280 260 Q 350 270 380 350 T 310 450 Q 260 380 280 260 Z" fill="#0f2b4a" stroke="#17406d" stroke-width="1.5"/> <!-- América do Sul -->
+                        <path d="M 480 100 Q 580 80 620 150 T 520 220 Z" fill="#0f2b4a" stroke="#17406d" stroke-width="1.5"/> <!-- Europa -->
+                        <path d="M 470 230 Q 580 220 620 320 T 520 420 Q 450 350 470 230 Z" fill="#0f2b4a" stroke="#17406d" stroke-width="1.5"/> <!-- África -->
+                        <path d="M 630 100 Q 850 80 880 250 T 700 300 Z" fill="#0f2b4a" stroke="#17406d" stroke-width="1.5"/> <!-- Ásia -->
+                        <path d="M 750 340 Q 850 330 860 420 T 760 420 Z" fill="#0f2b4a" stroke="#17406d" stroke-width="1.5"/> <!-- Oceania -->
+
+                        <!-- Hotspot Nodes -->
+                        <!-- Abrolhos Brasil -->
+                        <circle cx="360" cy="340" r="7" fill="#2dd4bf" class="hotspot-pulse"/>
+                        <text x="375" y="345" font-size="11" fill="#2dd4bf" font-weight="bold">Abrolhos (Bahia, Brasil)</text>
+
+                        <!-- Antártida Polo Sul -->
+                        <circle cx="500" cy="480" r="7" fill="#38bdf8" class="hotspot-pulse"/>
+                        <text x="500" y="465" font-size="11" fill="#38bdf8" text-anchor="middle" font-weight="bold">Oceano Antártico (Alimentação)</text>
+
+                        <!-- Santa Catarina -->
+                        <circle cx="325" cy="380" r="5" fill="#38bdf8"/>
+                        <text x="230" y="385" font-size="10" fill="#94a3b8">Santa Catarina (Baleia-Franca)</text>
+
+                        <!-- Dynamic Animated Route Path -->
+                        <path id="migration-path-1" d="M 500 470 Q 420 420 360 345" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="8,8"/>
+                    </svg>
+
+                    <!-- Migration Explanation Box -->
+                    <div class="mt-4 p-4 rounded-xl bg-ocean-950/80 border border-ocean-cyan/20 text-xs sm:text-sm text-slate-300">
+                        <strong id="season-info-title" class="text-ocean-cyan block text-base mb-1">Época de Inverno (Junho a Novembro)</strong>
+                        <p id="season-info-desc">
+                            Milhares de Baleias-Jubarte viajam mais de 4.000 km do gelo Antártico até as águas calmas e quentes do Parque Nacional Marinho dos Abrolhos na Bahia para acasalar e amamentar seus filhotes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eco Quiz and Conservation Section -->
+    <section id="quiz" class="py-20 bg-ocean-900 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-xs font-bold text-ocean-cyan tracking-widest uppercase mb-3">Conscientização & Desafio</h2>
+                <h3 class="font-serif text-3xl sm:text-5xl font-bold text-slate-100 mb-4">Quiz Ecológico Defensor dos Mares</h3>
+                <p class="text-slate-400 text-base">Teste seus conhecimentos sobre cetáceos e descubra como garantir a preservação dos oceanos.</p>
+            </div>
+
+            <!-- Quiz Card -->
+            <div id="quiz-container" class="glass-card p-6 sm:p-10 rounded-3xl border border-ocean-cyan/30 relative">
+                <!-- Progress bar -->
+                <div class="w-full h-2 bg-ocean-950 rounded-full mb-8 overflow-hidden">
+                    <div id="quiz-progress" class="h-full bg-gradient-to-r from-ocean-cyan to-ocean-teal transition-all duration-300" style="width: 20%;"></div>
+                </div>
+
+                <div id="quiz-question-box">
+                    <span id="quiz-step" class="text-xs font-bold text-ocean-teal uppercase tracking-wider block mb-2">Pergunta 1 de 5</span>
+                    <h4 id="quiz-question" class="text-xl sm:text-2xl font-bold text-slate-100 mb-6">Qual é a maior espécie de baleia (e o maior animal) existente na Terra?</h4>
+
+                    <div id="quiz-options" class="space-y-3 mb-6">
+                        <!-- Options injected by JS -->
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden p-4 rounded-xl text-xs sm:text-sm mb-6"></div>
+
+                    <button id="quiz-next-btn" onclick="nextQuestion()" class="hidden px-6 py-3 rounded-xl bg-ocean-cyan text-ocean-950 font-bold text-sm hover:bg-ocean-teal transition-all ml-auto">
+                        Próxima Pergunta →
+                    </button>
+                </div>
+
+                <!-- Final Certificate Screen (Hidden by Default) -->
+                <div id="quiz-results" class="hidden text-center py-6">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-ocean-cyan to-ocean-teal text-ocean-950 flex items-center justify-center mx-auto mb-4 font-bold text-3xl shadow-lg">
+                        🏆
+                    </div>
+                    <h4 class="font-serif text-3xl font-bold text-slate-100 mb-2">Parabéns, Protetor dos Oceanos!</h4>
+                    <p class="text-slate-300 text-sm mb-6">Você completou o Quiz com sucesso e demonstrou excelente conhecimento sobre os cetáceos.</p>
+                    
+                    <div class="p-6 rounded-2xl bg-ocean-950/80 border border-ocean-cyan/30 max-w-md mx-auto mb-8 text-left">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs text-slate-400">Pontuação Final:</span>
+                            <span id="quiz-final-score" class="text-xl font-bold text-ocean-cyan">5 / 5</span>
+                        </div>
+                        <div class="text-xs text-slate-300">
+                            <strong>Título Concedido:</strong> Guardião Oficial das Baleias e do Ecossistema Marinho.
+                        </div>
+                    </div>
+
+                    <button onclick="resetQuiz()" class="px-6 py-3 rounded-xl glass-card text-ocean-cyan border border-ocean-cyan/30 font-bold text-xs hover:bg-ocean-800 transition-all">
+                        Refazer o Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ocean-950 border-t border-ocean-cyan/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="flex items-center justify-center sm:justify-start space-x-2 text-ocean-cyan mb-2">
+                    <i data-lucide="anchor" class="w-5 h-5"></i>
+                    <span class="font-serif font-bold text-lg text-slate-100">Oceania Cetáceos</span>
+                </div>
+                <p class="text-xs text-slate-400">Plataforma educacional interativa para valorização e conservação da vida marinha.</p>
+            </div>
+            <div class="text-xs text-slate-500">
+                &copy; 2026 Oceania Cetáceos. Todos os direitos reservados. Preserve os mares.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Comprehensive Cetacean Species Dataset
+        const speciesData = [
+            {
+                id: 'blue',
+                name: 'Baleia-Azul',
+                scientific: 'Balaenoptera musculus',
+                type: 'misticeto',
+                status: 'Em Perigo',
+                statusColor: 'bg-red-500/20 text-red-300 border-red-500/30',
+                brasil: false,
+                length: 'Up to 30 meters',
+                lengthNum: 30,
+                weight: 'Up to 190 tons',
+                weightNum: 190,
+                maxDepth: 500,
+                img: 'https://images.unsplash.com/photo-1568430460488-218559688275?auto=format&fit=crop&w=800&q=80',
+                desc: 'O maior animal que já existiu no planeta Terra, superando em tamanho até os maiores dinossauros. Apenas a sua língua pode pesar o mesmo que um elefante adulto.',
+                diet: 'Alimenta-se quase exclusivamente de Krill (pequenos crustáceos), consumindo até 4 toneladas por dia.',
+                habitat: 'Habita todos os oceanos do mundo, realizando longas migrações entre os polos e a linha do Equador.'
+            },
+            {
+                id: 'humpback',
+                name: 'Baleia-Jubarte',
+                scientific: 'Megaptera novaeangliae',
+                type: 'misticeto',
+                status: 'Pouco Preocupante',
+                statusColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+                brasil: true,
+                length: '16 meters',
+                lengthNum: 16,
+                weight: '36 tons',
+                weightNum: 36,
+                maxDepth: 200,
+                img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
+                desc: 'Famosa mundialmente por seus saltos acrobáticos fora d\'água e por seus cantos melodiosos complexos emitidos pelos machos durante a reprodução.',
+                diet: 'Pequenos peixes em cardumes e krill. Utilizam a técnica da "rede de bolhas" para encurralar presas.',
+                habitat: 'Visita anualmente a costa do Brasil (especialmente o Arquipélago de Abrolhos na Bahia) entre julho e novembro.'
+            },
+            {
+                id: 'sperm',
+                name: 'Cachalote',
+                scientific: 'Physeter macrocephalus',
+                type: 'odontoceto',
+                status: 'Vulnerável',
+                statusColor: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
+                brasil: true,
+                length: '18 meters',
+                lengthNum: 18,
+                weight: '50 tons',
+                weightNum: 50,
+                maxDepth: 3000,
+                img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+                desc: 'O maior mamífero com dentes do mundo. Possui o maior cérebro de qualquer animal conhecido e um órgão especial na cabeça chamado espermacete.',
+                diet: 'Lulas gigantes e lulas colossais caçadas nas profundezas escuras do oceano.',
+                habitat: 'Águas oceânicas profundas em todo o globo. Frequenta a bacia de Santos e o nordeste do Brasil.'
+            },
+            {
+                id: 'orca',
+                name: 'Orca',
+                scientific: 'Orcinus orca',
+                type: 'odontoceto',
+                status: 'Dados Insuficientes',
+                statusColor: 'bg-slate-500/20 text-slate-300 border-slate-500/30',
+                brasil: true,
+                length: '9 meters',
+                lengthNum: 9,
+                weight: '6 tons',
+                weightNum: 6,
+                maxDepth: 100,
+                img: 'https://images.unsplash.com/photo-1541414779316-956a5c3d23b6?auto=format&fit=crop&w=800&q=80',
+                desc: 'O maior membro da família dos golfinhos. É um superpredador extremamente inteligente que caça em matilhas familiares coordenadas com técnicas complexas.',
+                diet: 'Peixes, focas, leões-marinhos e até mesmo filhotes de outras baleias maiores.',
+                habitat: 'Presente em todos os oceanos, desde águas polares geladas até águas tropicais no litoral brasileiro.'
+            },
+            {
+                id: 'right',
+                name: 'Baleia-Franca-do-Sul',
+                scientific: 'Eubalaena australis',
+                type: 'misticeto',
+                status: 'Pouco Preocupante',
+                statusColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+                brasil: true,
+                length: '17 meters',
+                lengthNum: 17,
+                weight: '60 tons',
+                weightNum: 60,
+                maxDepth: 180,
+                img: 'https://images.unsplash.com/photo-1570481662006-a3a1374699e8?auto=format&fit=crop&w=800&q=80',
+                desc: 'Reconhecida pelas calosidades esbranquiçadas na cabeça e pela ausência de nadadeira dorsal. Costuma nadar muito próxima da praia com seus filhotes.',
+                diet: 'Copépodes e plâncton filtrados continuamente com a boca aberta.',
+                habitat: 'Costa Sul do Brasil, especialmente no litoral de Santa Catarina durante o inverno.'
+            },
+            {
+                id: 'fin',
+                name: 'Baleia-Fin',
+                scientific: 'Balaenoptera physalus',
+                type: 'misticeto',
+                status: 'Vulnerável',
+                statusColor: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
+                brasil: false,
+                length: '24 meters',
+                lengthNum: 24,
+                weight: '80 tons',
+                weightNum: 80,
+                maxDepth: 470,
+                img: 'https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=800&q=80',
+                desc: 'Conhecida como o "galgo dos mares" devido ao seu corpo extremamente hidrodinâmico que permite atingir velocidades impressionantes de até 45 km/h.',
+                diet: 'Pequenos peixes, lulas e krill.',
+                habitat: 'Habita mares abertos e profundos de regiões temperadas e polares.'
+            },
+            {
+                id: 'gray',
+                name: 'Baleia-Cinzenta',
+                scientific: 'Eschrichtius robustus',
+                type: 'misticeto',
+                status: 'Pouco Preocupante',
+                statusColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+                brasil: false,
+                length: '15 meters',
+                lengthNum: 15,
+                weight: '35 tons',
+                weightNum: 35,
+                maxDepth: 120,
+                img: 'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80',
+                desc: 'Famosa por se alimentar diretamente do fundo do mar, virando-se de lado e sugando os sedimentos do fundo oceânico.',
+                diet: 'Anfípodes e pequenos invertebrados bentônicos.',
+                habitat: 'Pacífico Norte, realizando migrações do Alasca até a Baixa Califórnia no México.'
+            },
+            {
+                id: 'minke',
+                name: 'Baleia-Minke-Antártica',
+                scientific: 'Balaenoptera bonaerensis',
+                type: 'misticeto',
+                status: 'Quase Ameaçada',
+                statusColor: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
+                brasil: true,
+                length: '10 meters',
+                lengthNum: 10,
+                weight: '10 tons',
+                weightNum: 10,
+                maxDepth: 250,
+                img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+                desc: 'Uma das menores representantes da família dos rorquais. É rápida, curiosa e costuma se aproximar de embarcações.',
+                diet: 'Krill antártico.',
+                habitat: 'Oceano do Sul no verão, migrando para águas tropicais brasileiras no inverno.'
+            }
+        ];
+
+        // Canvas Particle Bubbles & Ocean Rays Effect
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.radius = Math.random() * 4 + 1;
+                this.speed = Math.random() * 1.5 + 0.5;
+                this.alpha = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.y -= this.speed;
+                if (this.y < -10) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(56, 189, 248, ${this.alpha})`;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#38bdf8';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 45; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateHero() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw underwater light beams
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(canvas.width * 0.3, 0);
+            ctx.lineTo(canvas.width * 0.1, canvas.height);
+            ctx.lineTo(canvas.width * 0.4, canvas.height);
+            ctx.lineTo(canvas.width * 0.5, 0);
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.03)';
+            ctx.fill();
+            ctx.restore();
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateHero);
+        }
+        animateHero();
+
+        let currentFilter = 'todos';
+
+        function renderSpecies() {
+            const grid = document.getElementById('species-grid');
+            const search = document.getElementById('species-search').value.toLowerCase();
+            grid.innerHTML = '';
+
+            const filtered = speciesData.filter(s => {
+                const matchesFilter = 
+                    currentFilter === 'todos' ||
+                    (currentFilter === 'misticeto' && s.type === 'misticeto') ||
+                    (currentFilter === 'odontoceto' && s.type === 'odontoceto') ||
+                    (currentFilter === 'ameacada' && s.status !== 'Pouco Preocupante') ||
+                    (currentFilter === 'brasil' && s.brasil);
+
+                const matchesSearch = s.name.toLowerCase().includes(search) || s.scientific.toLowerCase().includes(search);
+
+                return matchesFilter && matchesSearch;
+            });
+
+            filtered.forEach(s => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-2xl overflow-hidden hover:border-ocean-cyan/50 transition-all duration-300 hover:-translate-y-1 group cursor-pointer flex flex-col';
+                card.onclick = () => openModal(s.id);
+
+                card.innerHTML = `
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="${s.img}" alt="${s.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/030e21/38bdf8?text=${encodeURIComponent(s.name)}'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ocean-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold border ${s.statusColor}">
+                            ${s.status}
+                        </span>
+                        ${s.brasil ? '<span class="absolute top-3 right-3 text-xs p-1 bg-ocean-950/80 rounded-lg border border-ocean-cyan/30" title="Presente no Brasil">🇧🇷</span>' : ''}
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-serif text-xl font-bold text-slate-100 group-hover:text-ocean-cyan transition-colors">${s.name}</h4>
+                            <p class="text-xs text-ocean-cyan/80 italic mb-3">${s.scientific}</p>
+                            <p class="text-slate-300 text-xs line-clamp-2 mb-4">${s.desc}</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-ocean-cyan/10 text-xs text-slate-400">
+                            <span class="flex items-center space-x-1"><i data-lucide="ruler" class="w-3.5 h-3.5 text-ocean-cyan"></i> <span>${s.length}</span></span>
+                            <span class="flex items-center space-x-1"><i data-lucide="weight" class="w-3.5 h-3.5 text-ocean-teal"></i> <span>${s.weight}</span></span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function setFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-ocean-cyan', 'text-ocean-950');
+                btn.classList.add('glass-card', 'text-slate-300');
+            });
+            event.target.classList.add('bg-ocean-cyan', 'text-ocean-950');
+            renderSpecies();
+        }
+
+        function filterSpecies() {
+            renderSpecies();
+        }
+
+        let activeModalSpecies = null;
+
+        function openModal(id) {
+            const s = speciesData.find(x => x.id === id);
+            if (!s) return;
+            activeModalSpecies = s;
+
+            document.getElementById('modal-img').src = s.img;
+            document.getElementById('modal-title').textContent = s.name;
+            document.getElementById('modal-scientific').textContent = s.scientific;
+            document.getElementById('modal-status').textContent = s.status;
+            document.getElementById('modal-length').textContent = s.length;
+            document.getElementById('modal-weight').textContent = s.weight;
+            document.getElementById('modal-depth').textContent = s.maxDepth + 'm';
+            document.getElementById('modal-desc').textContent = s.desc;
+            document.getElementById('modal-diet').textContent = s.diet;
+            document.getElementById('modal-habitat').textContent = s.habitat;
+
+            document.getElementById('species-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            document.getElementById('species-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        const refData = {
+            human: { name: 'Ser Humano', length: 1.8, weight: 0.08, icon: 'user' },
+            elephant: { name: 'Elefante Africano', length: 4.0, weight: 6.0, icon: 'box' },
+            bus: { name: 'Ônibus Escolar', length: 12.0, weight: 12.0, icon: 'bus' },
+            submarine: { name: 'Submarino', length: 70.0, weight: 1000.0, icon: 'navigation' }
+        };
+
+        function updateComparison() {
+            const whaleKey = document.getElementById('comp-whale-select').value;
+            const refKey = document.getElementById('comp-ref-select').value;
+
+            const whale = speciesData.find(s => s.id === whaleKey) || speciesData[0];
+            const ref = refData[refKey];
+
+            document.getElementById('comp-whale-label').innerHTML = `<i data-lucide="fish" class="w-4 h-4"></i><span>${whale.name}</span>`;
+            document.getElementById('comp-whale-metrics').textContent = `${whale.lengthNum}m | ${whale.weightNum}t`;
+
+            document.getElementById('comp-ref-label').innerHTML = `<i data-lucide="${ref.icon}" class="w-4 h-4"></i><span>${ref.name}</span>`;
+            document.getElementById('comp-ref-metrics').textContent = `${ref.length}m | ${ref.weight}t`;
+
+            const maxLength = Math.max(whale.lengthNum, ref.length);
+            const whalePct = Math.round((whale.lengthNum / maxLength) * 100);
+            const refPct = Math.round((ref.length / maxLength) * 100);
+
+            document.getElementById('comp-whale-bar').style.width = `${whalePct}%`;
+            document.getElementById('comp-whale-bar').textContent = `${whalePct}%`;
+
+            document.getElementById('comp-ref-bar').style.width = `${refPct}%`;
+            document.getElementById('comp-ref-bar').textContent = `${refPct}%`;
+
+            const ratioLength = (whale.lengthNum / ref.length).toFixed(1);
+            const ratioWeight = Math.round(whale.weightNum / ref.weight);
+
+            document.getElementById('comp-fact-text').textContent = 
+                `A ${whale.name} é aproximadamente ${ratioLength}x mais longa do que um(a) ${ref.name} e seu peso total equivale a cerca de ${ratioWeight} unidades de ${ref.name} juntos!`;
+
+            lucide.createIcons();
+        }
+
+        function updateDepthSimulator() {
+            const depth = parseInt(document.getElementById('depth-range').value);
+            document.getElementById('depth-value').textContent = `${depth} metros`;
+
+            const container = document.getElementById('depth-container');
+            const zoneTitle = document.getElementById('zone-title');
+            const zoneDesc = document.getElementById('zone-desc');
+            const zonePressure = document.getElementById('zone-pressure');
+            const zoneTemp = document.getElementById('zone-temp');
+            const speciesList = document.getElementById('depth-species-list');
+
+            // Calculate Pressure & Temp
+            const pressure = (1 + (depth / 10)).toFixed(1);
+            let temp = (22 - (depth / 150)).toFixed(1);
+            if (temp < 2) temp = "2.0";
+
+            zonePressure.textContent = `${pressure} atm`;
+            zoneTemp.textContent = `${temp} °C`;
+
+            // Calculate Ocean Zones and color gradients
+            if (depth <= 200) {
+                container.style.background = 'linear-gradient(180deg, #0f2b4a 0%, #081a36 100%)';
+                zoneTitle.textContent = 'Zona Epipelágica (0 - 200m)';
+                zoneDesc.textContent = 'Zona de luz solar abundante. Alta biodiversidade, plâncton em suspensão e baleias em superfície.';
+            } else if (depth <= 1000) {
+                container.style.background = 'linear-gradient(180deg, #081a36 0%, #040e21 100%)';
+                zoneTitle.textContent = 'Zona Mesopelágica (200 - 1000m)';
+                zoneDesc.textContent = 'Zona da penumbra. A luz solar diminui drasticamente. Início da bioluminescência.';
+            } else {
+                container.style.background = 'linear-gradient(180deg, #040e21 0%, #01040a 100%)';
+                zoneTitle.textContent = 'Zona Batipelágica & Abissal (1000m+)';
+                zoneDesc.textContent = 'Escuridão total, frio congelante e pressão massacrante. Lar de lulas gigantes e cetáceos mergulhadores profundos.';
+            }
+
+            // Available species at this depth range
+            speciesList.innerHTML = '';
+            const matching = speciesData.filter(s => s.maxDepth >= depth);
+
+            if (matching.length === 0) {
+                speciesList.innerHTML = '<span class="text-xs text-slate-400 italic">Nenhum cetáceo comum atinge esta profundidade extrema regularmente (Apenas o Cachalote chega até ~3.000m).</span>';
+            } else {
+                matching.forEach(s => {
+                    const badge = document.createElement('span');
+                    badge.className = 'px-3 py-1.5 rounded-xl bg-ocean-800 border border-ocean-cyan/30 text-xs text-ocean-cyan font-semibold flex items-center space-x-1';
+                    badge.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i><span>${s.name} (até ${s.maxDepth}m)</span>`;
+                    speciesList.appendChild(badge);
+                });
+            }
+            lucide.createIcons();
+        }
+
+        const anatomyData = {
+            blowhole: {
+                title: 'Espiráculo (Blowhole)',
+                text: 'Localizado no topo da cabeça, funciona como a narina da baleia. As baleias-de-barretas possuem dois espiráculos, enquanto os odontocetos possuem apenas um.',
+                fact: 'A respiração das baleias é 100% voluntária; elas não respiram por reflexo como os humanos!'
+            },
+            baleen: {
+                title: 'Barretas de Cerdas (Baleen)',
+                text: 'Placas queratinizadas verticais suspensas na mandíbula superior que funcionam como uma peneira gigante para filtrar krill e pequenos peixes.',
+                fact: 'Uma baleia-azul pode ter até 400 placas de cerdas de cada lado da boca!'
+            },
+            blubber: {
+                title: 'Camada de Gordura (Blubber)',
+                text: 'Uma espessa camada de gordura vascularizada sob a pele que provê isolamento térmico contra águas congelantes e armazena reservas de energia durante migrações.',
+                fact: 'Em baleias-francas, a camada de gordura pode ultrapassar 30 cm de espessura!'
+            },
+            fin: {
+                title: 'Nadadeira Peitoral',
+                text: 'Utilizadas para direcionamento, estabilização e manobras. Geneticamente possuem a mesma estrutura óssea de 5 dedos dos braços humanos.',
+                fact: 'A Baleia-Jubarte tem as maiores nadadeiras peitorais do planeta, medindo até um terço de seu corpo.'
+            },
+            fluke: {
+                title: 'Cauda e Nadadeira Caudal (Fluke)',
+                text: 'Formada por tecido fibroso sem ossos, movimenta-se na vertical (de cima para baixo) para propulsão potente através da água.',
+                fact: 'O desenho de cicatrizes e cores na parte inferior do fluke da Jubarte é único para cada indivíduo, funcionando como digital.'
+            },
+            heart: {
+                title: 'Coração Gigante & Sistema Circulatório',
+                text: 'O coração de uma baleia-azul pesa mais de 180 kg e tem o tamanho de um carro pequeno, batendo apenas 4 a 8 vezes por minuto durante mergulhos.',
+                fact: 'As artérias de uma baleia-azul são tão largas que uma criança pequena poderia nadar por elas!'
+            }
+        };
+
+        function selectAnatomy(key) {
+            const data = anatomyData[key];
+            if (!data) return;
+
+            document.getElementById('anatomy-title').textContent = data.title;
+            document.getElementById('anatomy-text').textContent = data.text;
+            document.getElementById('anatomy-fact').innerHTML = `<strong>Fato Surpreendente:</strong> ${data.fact}`;
+            document.getElementById('anatomy-badge').textContent = 'Estrutura Selecionada';
+        }
+
+        let audioCtx = null;
+        let activeOscillators = [];
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function stopSynthSound() {
+            activeOscillators.forEach(osc => {
+                try { osc.stop(); osc.disconnect(); } catch (e) {}
+            });
+            activeOscillators = [];
+        }
+
+        function playSynthPreset(preset) {
+            initAudioContext();
+            stopSynthSound();
+
+            const visualizerCanvas = document.getElementById('audio-visualizer');
+            const visualizerCtx = visualizerCanvas.getContext('2d');
+            visualizerCanvas.width = visualizerCanvas.offsetWidth;
+            visualizerCanvas.height = visualizerCanvas.offsetHeight;
+
+            const masterGain = audioCtx.createGain();
+            masterGain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+
+            const analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 64;
+            masterGain.connect(analyser);
+            analyser.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+
+            if (preset === 'humpback') {
+                // Jubarte: Frequency sweeps
+                const osc = audioCtx.createOscillator();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(300, now);
+                osc.frequency.exponentialRampToValueAtTime(700, now + 1.5);
+                osc.frequency.exponentialRampToValueAtTime(200, now + 3.0);
+
+                const gain = audioCtx.createGain();
+                gain.gain.setValueAtTime(0, now);
+                gain.gain.linearRampToValueAtTime(0.5, now + 0.5);
+                gain.gain.linearRampToValueAtTime(0, now + 3.0);
+
+                osc.connect(gain);
+                gain.connect(masterGain);
+                osc.start(now);
+                osc.stop(now + 3.0);
+                activeOscillators.push(osc);
+
+            } else if (preset === 'blue') {
+                // Blue whale deep infra-bass
+                const osc = audioCtx.createOscillator();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(45, now);
+                osc.frequency.linearRampToValueAtTime(35, now + 4.0);
+
+                const gain = audioCtx.createGain();
+                gain.gain.setValueAtTime(0, now);
+                gain.gain.linearRampToValueAtTime(0.8, now + 1.0);
+                gain.gain.linearRampToValueAtTime(0, now + 4.0);
+
+                osc.connect(gain);
+                gain.connect(masterGain);
+                osc.start(now);
+                osc.stop(now + 4.0);
+                activeOscillators.push(osc);
+
+            } else if (preset === 'sperm') {
+                // Cachalote click sequence
+                for (let i = 0; i < 8; i++) {
+                    const clickTime = now + (i * 0.25);
+                    const osc = audioCtx.createOscillator();
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(1200, clickTime);
+
+                    const gain = audioCtx.createGain();
+                    gain.gain.setValueAtTime(0.6, clickTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, clickTime + 0.05);
+
+                    osc.connect(gain);
+                    gain.connect(masterGain);
+                    osc.start(clickTime);
+                    osc.stop(clickTime + 0.05);
+                    activeOscillators.push(osc);
+                }
+            } else if (preset === 'abyss') {
+                // Deep Ocean Noise Rumble
+                const bufferSize = audioCtx.sampleRate * 3;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const output = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+
+                const whiteNoise = audioCtx.createBufferSource();
+                whiteNoise.buffer = buffer;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(120, now);
+
+                const gain = audioCtx.createGain();
+                gain.gain.setValueAtTime(0.7, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 3.0);
+
+                whiteNoise.connect(filter);
+                filter.connect(gain);
+                gain.connect(masterGain);
+                whiteNoise.start(now);
+                whiteNoise.stop(now + 3.0);
+            }
+
+            // Animate Visualizer Waveform
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+
+            function drawWaveform() {
+                if (activeOscillators.length === 0 && preset !== 'sperm') return;
+                requestAnimationFrame(drawWaveform);
+                analyser.getByteFrequencyData(dataArray);
+
+                visualizerCtx.clearRect(0, 0, visualizerCanvas.width, visualizerCanvas.height);
+                const barWidth = (visualizerCanvas.width / bufferLength) * 2.5;
+                let x = 0;
+
+                for (let i = 0; i < bufferLength; i++) {
+                    const barHeight = (dataArray[i] / 255) * visualizerCanvas.height;
+                    visualizerCtx.fillStyle = '#38bdf8';
+                    visualizerCtx.fillRect(x, visualizerCanvas.height - barHeight, barWidth, barHeight);
+                    x += barWidth + 2;
+                }
+            }
+            drawWaveform();
+        }
+
+        function playModalSound() {
+            if (activeModalSpecies) {
+                if (activeModalSpecies.id === 'sperm') playSynthPreset('sperm');
+                else if (activeModalSpecies.id === 'blue') playSynthPreset('blue');
+                else playSynthPreset('humpback');
+            }
+        }
+
+        let ambientActive = false;
+        let ambientSource = null;
+
+        function toggleGlobalAmbient() {
+            initAudioContext();
+            const btnText = document.getElementById('global-audio-text');
+            const btnIcon = document.getElementById('global-audio-icon');
+
+            if (!ambientActive) {
+                ambientActive = true;
+                btnText.textContent = "Som Ativo";
+                playSynthPreset('humpback');
+            } else {
+                ambientActive = false;
+                btnText.textContent = "Som do Oceano";
+                stopSynthSound();
+            }
+        }
+
+        function setSeason(season) {
+            const path = document.getElementById('migration-path-1');
+            const title = document.getElementById('season-info-title');
+            const desc = document.getElementById('season-info-desc');
+
+            const btnWinter = document.getElementById('season-winter');
+            const btnSummer = document.getElementById('season-summer');
+
+            if (season === 'inverno') {
+                btnWinter.className = "px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-ocean-cyan text-ocean-950";
+                btnSummer.className = "px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white transition-all";
+                title.textContent = "Época de Inverno (Junho a Novembro)";
+                desc.textContent = "Milhares de Baleias-Jubarte viajam mais de 4.000 km do gelo Antártico até as águas calmas e quentes do Parque Nacional Marinho dos Abrolhos na Bahia para acasalar e amamentar seus filhotes.";
+                path.setAttribute('d', 'M 500 470 Q 420 420 360 345');
+            } else {
+                btnSummer.className = "px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-ocean-cyan text-ocean-950";
+                btnWinter.className = "px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white transition-all";
+                title.textContent = "Época de Verão (Dezembro a Maio)";
+                desc.textContent = "As baleias retornam para o Oceano Antártico gelado, rico em krill e nutrientes, onde se alimentam continuamente para acumular gordura suficiente para o ano seguinte.";
+                path.setAttribute('d', 'M 360 345 Q 420 420 500 470');
+            }
+        }
+
+        const quizData = [
+            {
+                q: 'Qual é o maior animal que já existiu no planeta Terra?',
+                options: ['Megalodonte', 'Baleia-Azul', 'Dreadnoughtus (Dissauro)', 'Cachalote'],
+                correct: 1,
+                explanation: 'A Baleia-Azul é o maior animal de todos os tempos, atingindo até 30 metros de comprimento e 190 toneladas.'
+            },
+            {
+                q: 'Qual espécie de baleia é mundialmente famosa pelos seus saltos acrobáticos na costa brasileira?',
+                options: ['Baleia-Jubarte', 'Baleia-Fin', 'Baleia-Cinzenta', 'Baleia-Minke'],
+                correct: 0,
+                explanation: 'A Baleia-Jubarte visita a costa brasileira (como Abrolhos-BA) no inverno para reprodução e exibe saltos incríveis.'
+            },
+            {
+                q: 'Como o Cachalote caça em profundidades extremas de até 3.000 metros na escuridão total?',
+                options: ['Usando visão noturna bioluminescente', 'Através de ecolocalização com cliques de som', 'Pelo olfato apurado', 'Seguindo correntes térmicas'],
+                correct: 1,
+                explanation: 'Os Cachalotes usam um sistema avançado de ecolocalização emitindo cliques ultrassônicos para mapear e localizar lulas gigantes na escuridão abissal.'
+            },
+            {
+                q: 'O que são as "barretas" (ou barbas) presentes em baleias como a Baleia-Azul e Jubarte?',
+                options: ['Dentes afiados para mastigar peixes', 'Placas de queratina usadas para filtrar alimento', 'Ossos da nadadeira peitoral', 'Sensores térmicos de pele'],
+                correct: 1,
+                explanation: 'As barretas são feitas de queratina (mesmo material de nossas unhas) e servem para filtrar krill e água.'
+            },
+            {
+                q: 'Qual é uma das maiores ameaças atuais enfrentadas pelas baleias no mundo moderno?',
+                options: ['Poluição por plásticos e redes de pesca fantasma', 'Colisão com navios cargueiros', 'Poluição sonora marinha por motores', 'Todas as alternativas anteriores'],
+                correct: 3,
+                explanation: 'Todas as alternativas são ameaças graves geradas pela atividade humana nos oceanos que exigem preservação imediata.'
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+
+        function loadQuestion() {
+            const q = quizData[currentQuizIndex];
+            document.getElementById('quiz-step').textContent = `Pergunta ${currentQuizIndex + 1} de ${quizData.length}`;
+            document.getElementById('quiz-question').textContent = q.q;
+            document.getElementById('quiz-progress').style.width = `${((currentQuizIndex + 1) / quizData.length) * 100}%`;
+
+            const optionsBox = document.getElementById('quiz-options');
+            optionsBox.innerHTML = '';
+
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.className = 'hidden p-4 rounded-xl text-xs sm:text-sm mb-6';
+
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full p-4 rounded-2xl glass-card text-left text-xs sm:text-sm font-semibold hover:border-ocean-cyan/50 transition-all flex items-center justify-between text-slate-200';
+                btn.innerHTML = `<span>${opt}</span> <i data-lucide="circle" class="w-4 h-4 text-slate-500"></i>`;
+                btn.onclick = () => checkAnswer(idx, btn);
+                optionsBox.appendChild(btn);
+            });
+            lucide.createIcons();
+        }
+
+        function checkAnswer(selectedIdx, button) {
+            const q = quizData[currentQuizIndex];
+            const feedback = document.getElementById('quiz-feedback');
+            const allBtns = document.getElementById('quiz-options').children;
+
+            for (let btn of allBtns) {
+                btn.disabled = true;
+            }
+
+            if (selectedIdx === q.correct) {
+                quizScore++;
+                button.classList.add('bg-emerald-500/20', 'border-emerald-500', 'text-emerald-300');
+                feedback.className = 'p-4 rounded-xl text-xs sm:text-sm mb-6 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300';
+                feedback.innerHTML = `<strong>Correto!</strong> ${q.explanation}`;
+            } else {
+                button.classList.add('bg-red-500/20', 'border-red-500', 'text-red-300');
+                allBtns[q.correct].classList.add('bg-emerald-500/20', 'border-emerald-500', 'text-emerald-300');
+                feedback.className = 'p-4 rounded-xl text-xs sm:text-sm mb-6 bg-red-500/10 border border-red-500/30 text-red-300';
+                feedback.innerHTML = `<strong>Incorreto.</strong> ${q.explanation}`;
+            }
+
+            document.getElementById('quiz-next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('quiz-question-box').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+            document.getElementById('quiz-final-score').textContent = `${quizScore} / ${quizData.length}`;
+        }
+
+        function resetQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-question-box').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(c => {
+                const target = +c.getAttribute('data-target');
+                let count = 0;
+                const speed = target / 50;
+
+                const updateCount = () => {
+                    count += speed;
+                    if (count < target) {
+                        c.innerText = Math.ceil(count);
+                        setTimeout(updateCount, 30);
+                    } else {
+                        c.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        window.onload = function() {
+            lucide.createIcons();
+            renderSpecies();
+            updateComparison();
+            updateDepthSimulator();
+            selectAnatomy('blowhole');
+            loadQuestion();
+            animateCounters();
+        };
+    </script>
+</body>
+</html>
